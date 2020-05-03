@@ -1,2 +1,19 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= flash[:notice] %>
+
+<h1>User info</h1>
+
+<h1>New Book</h1>
+<%= form_for(@post_book) do |f| %>
+
+	<p>Title<br>
+	<%= f.text_field :title %></p>
+
+	<p>Opinion<br>
+	<%= f.text_area :opinion %></p> <!-- なぜ、opinion なのか -->
+
+	<p><%= f.submit 'Create Book' %></p>
+<% end %>
+
+<% if @user.id == current_user.id %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
+<% end %>

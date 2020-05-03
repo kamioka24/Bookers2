@@ -27,7 +27,10 @@
           </li>
         <% else %>
           <li class="header-list">
-            <%= link_to "Home", new_user_registration_path %>
+            <%= link_to "Home", "/" %> <!-- 要変更 -->
+          </li>
+          <li class="header-list">
+            <%= link_to "About", home_about_path %>
           </li>
           <li class="header-list">
             <%= link_to "sign up", new_user_registration_path %>

@@ -1,2 +1,11 @@
 <h1>PostBooks#show</h1>
 <p>Find me in app/views/post_books/show.html.erb</p>
+
+
+<% if @user.id == current_user.id %>
+        <p><%= link_to "Edit", edit_post_book_path(@post_book), class: "pull-right" %></p>
+<% end %>
+
+<% if @post_book.user == current_user %>
+  <%= link_to "Destroy", post_book_path(@post_book), method: :delete %>
+<% end %>
