@@ -1,11 +1,14 @@
-<h1>PostBooks#show</h1>
-<p>Find me in app/views/post_books/show.html.erb</p>
+<p><%= flash[:notice] %></p>
 
+<h1>その本の詳細</h1>
 
-<% if @user.id == current_user.id %>
-        <p><%= link_to "Edit", edit_post_book_path(@post_book), class: "pull-right" %></p>
+	<p><%= @post_book.title %></p>
+	<p><%= @post_book.body %></p>
+
+<% if @post_book.user == current_user %>
+	<p><%= link_to "Edit", edit_post_book_path(@post_book.id), class: "pull-right" %></p>
 <% end %>
 
 <% if @post_book.user == current_user %>
-  <%= link_to "Destroy", post_book_path(@post_book), method: :delete %>
+	<p><%= link_to "Destroy", post_book_path(@post_book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
 <% end %>

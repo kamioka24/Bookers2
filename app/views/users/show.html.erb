@@ -1,19 +1,56 @@
-<%= flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h1>User info</h1>
 
-<h1>User info</h1>
+			image
 
-<h1>New Book</h1>
-<%= form_for(@post_book) do |f| %>
+			<p>name:<%= @user.name %></p>
 
-	<p>Title<br>
-	<%= f.text_field :title %></p>
+			<p>introduction:<%= @user.introduction %></p>
 
-	<p>Opinion<br>
-	<%= f.text_area :opinion %></p> <!-- なぜ、opinion なのか -->
 
-	<p><%= f.submit 'Create Book' %></p>
-<% end %>
+			<% if @user.id == current_user.id %>
+			        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
+			<% end %>
 
-<% if @user.id == current_user.id %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
-<% end %>
+			<h1>New Book</h1>
+			<%= form_for(@post_book) do |f| %>
+				<% if @post_book.errors.any? %>
+					<%= @postbook.errors.count %>error prohibited this post_book from being saved:<br>
+					<ul>
+						<% @post_book.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				<% end %>
+				<div class="new-book-form">
+					<p>Title</p>
+					<%= f.text_field :title %>
+
+					<p>Opinion</p>
+					<%= f.text_area :body %>
+
+					<p><%= f.submit 'Create Book' %></p>
+				</div>
+			<% end %>
+		</div>
+
+		<div class="col-xs-9">
+			<table width="800">
+				<h1>Books</h1>
+				<tr>
+					<th>Title</th>
+					<th>Opinion</th>
+				</tr>
+					<% @post_books.each do |post_book| %>
+						<tr align="left">
+							<td><%= link_to post_book.title, post_book_path(post_book) %></td>
+							<td><%= post_book.body %></td>
+						</tr>
+					<% end %>
+			</table>
+		</div>
+	</div>
+</div>

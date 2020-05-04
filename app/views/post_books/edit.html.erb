@@ -1,6 +1,6 @@
 <h1>Editing Book</h1>
 
-<%= form_for(@book, url:"/books/#{@book.id}") do |f| %>
+<%= form_for(@post_book, url:"/post_books/#{@post_book.id}") do |f| %>
 	<p>Title<br>
 	<%= f.text_field :title %></p>
 
@@ -10,3 +10,6 @@
 	<%= f.submit 'Update Book' %>
 
 <% end %>
+
+<p><%= link_to "Show", post_book_path(@post_book) %> |
+<%= link_to "Back", post_books_path %></p>
