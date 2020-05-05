@@ -1,14 +1,15 @@
 <h1>User info</h1>
 
-<%= form_for(@user, url'/users/#{@user.id}') do |f| %> <!-- url以降のもっと良い書き方があるか -->
-	Name
-	<%= f.text_field :name %>
+<%= form_for(@user) do |f| %>
+	<p>Name
+	<%= f.text_field :name %></p>
 
-	Image
+	<p>Image</p>
+	<%= f.attachment_field :profile_image %>
 
-	Introduction
-	<%= f.text_area :introduction %>
+	<p>Introduction
+	<%= f.text_area :introduction %></p>
 
-	<%= f.submit 'Update User' %>
+	<p><%= f.submit 'Update User' %></p>
 
 <% end %>

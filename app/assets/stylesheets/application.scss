@@ -16,6 +16,36 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.new-book-form {
-	width: 300px;
+
+li {
+	list-style: none;
+}
+
+header {
+	height: 50px;
+	background-color: #333;
+	color: #fff;
+}
+
+.header-title {
+	float: left;
+}
+
+.header-list {
+	float: left;
+	line-height: 50px;
+	margin-right: 30px;
+}
+
+footer {
+	float: right;
+}
+
+main {
+	width: 1170px;
+	margin: 0 auto;
+}
+
+.edit-btn {
+	padding-right: 30px;
 }

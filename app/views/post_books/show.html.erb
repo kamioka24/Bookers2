@@ -1,14 +1,17 @@
 <p><%= flash[:notice] %></p>
 
-<h1>その本の詳細</h1>
+<table width="800">
+	<h1>Book detail</h1>
+	<tr>
+		<th></th>
+		<th><%= @post_book.title %></th>
+		<th><%= @post_book.body %></th>
+		<% if @post_book.user == current_user %>
+			<th class="edit-btn"><%= link_to "Edit", edit_post_book_path(@post_book.id), class: "pull-right" %></th>
+		<% end %>
 
-	<p><%= @post_book.title %></p>
-	<p><%= @post_book.body %></p>
-
-<% if @post_book.user == current_user %>
-	<p><%= link_to "Edit", edit_post_book_path(@post_book.id), class: "pull-right" %></p>
-<% end %>
-
-<% if @post_book.user == current_user %>
-	<p><%= link_to "Destroy", post_book_path(@post_book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
-<% end %>
+		<% if @post_book.user == current_user %>
+			<th><%= link_to "Destroy", post_book_path(@post_book.id), method: :delete, "data-confirm" => "本当に削しますか？" %></th>
+		<% end %>
+	</tr>
+</table>

@@ -6,11 +6,14 @@ class PostBooksController < ApplicationController
     if @post_book.save
        redirect_to post_book_path(@post_book.id), notice: "You have creatad book successfully."
     else
-      render "edit"
+      @post_books = PostBook.all
+      @user = User.find(current_user.id)
+      render "index"
     end
   end
 
   def index
+    @post_book = PostBook.new
     @post_books = PostBook.all
   end
 
@@ -25,7 +28,7 @@ class PostBooksController < ApplicationController
   def update
     @post_book = PostBook.find(params[:id])
     if @post_book.update(post_book_params)
-       redirect_to user_path(@user.id), notice: "You have updated book successfully."
+       redirect_to user_path(current_user.id), notice: "You have updated book successfully."
     else
        render "edit"
     end
