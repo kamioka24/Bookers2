@@ -1,10 +1,11 @@
-<p><%= flash[:notice] %></p>
+
 <div class="container">
 	<div class="row">
+		<p><%= flash[:notice] %></p>
 		<div class="col-xs-3">
 			<h1>User info</h1>
 
-			<%= attachment_image_tag @user, :profile_image, size: "200x200", fallback: "no_image.jpg"%>
+			<%= attachment_image_tag @user, :profile_image, size: "150x150", fallback: "no_image.jpg"%>
 
 			<p>name:<%= @user.name %></p>
 
@@ -30,18 +31,27 @@
 		</div>
 
 		<div class="col-xs-9">
-			<table width="800">
+			<table>
 				<h1>Books</h1>
+				<thead>
 				<tr>
+					<th></th>
 					<th>Title</th>
 					<th>Opinion</th>
 				</tr>
+				</thead>
+				<tbody>
 				<% @post_books.each do |post_book| %>
 					<tr align="left">
+						<td><%= link_to user_path(post_book.user.id) do %>
+						<%= attachment_image_tag post_book.user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
+						<% end %>
+						</td>
 						<td><%= link_to post_book.title, post_book_path(post_book) %></td>
 						<td><%= post_book.body %></td>
 					</tr>
 				<% end %>
+				</tbody>
 			</table>
 		</div>
 	</div>
