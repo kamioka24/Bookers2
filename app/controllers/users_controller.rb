@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = User.find(current_user.id)
     @users = User.all
+    @post_book = PostBook.new
   end
 
   def show
@@ -18,7 +20,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
     if @user.update(user_params)
        redirect_to user_path(@user.id), notice: "You have updated user successfully."
     else
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image_id)
+  	params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
 end

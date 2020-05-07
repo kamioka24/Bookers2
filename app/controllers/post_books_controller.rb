@@ -15,10 +15,13 @@ class PostBooksController < ApplicationController
   def index
     @post_book = PostBook.new
     @post_books = PostBook.all
+    @user = User.find(current_user.id)
   end
 
   def show
-    @post_book = PostBook.find(params[:id])
+    @my_book = PostBook.find(params[:id])
+    @post_book = PostBook.new
+    @user = @my_book.user
   end
 
   def edit
@@ -28,7 +31,7 @@ class PostBooksController < ApplicationController
   def update
     @post_book = PostBook.find(params[:id])
     if @post_book.update(post_book_params)
-       redirect_to user_path(current_user.id), notice: "You have updated book successfully."
+       redirect_to post_book_path(@post_book), notice: "You have updated book successfully."
     else
        render "edit"
     end

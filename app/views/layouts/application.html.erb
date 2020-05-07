@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Bookers002</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,39 +12,62 @@
   <body>
     <header>
       <div class="header-contents">
-        <h2 class="header-title">Bookers2</h2>
-        <div class="header-list">
-          <ul>
+        <h2 class="header-title">Bookers002</h2>
+        <nav>
+          <ul class="nav-list">
             <% if user_signed_in? %>
-              <li class="header-list">
-                <%= link_to "Home", user_path(current_user.id) %>
+              <li class="nav-list-item">
+                <%= link_to user_path(current_user.id) do %>
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                  Home
+                <% end %>
               </li>
-              <li class="header-list">
-                <%= link_to 'Users', users_path %>
+              <li class="nav-list-item">
+                <%= link_to users_path do %>
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  Users
+                <% end %>
               </li>
-              <li class="header-list">
-                <%= link_to 'Books', post_books_path %>
+              <li class="nav-list-item">
+                <%= link_to books_path do %>
+                  <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                  Books
+                <% end %>
               </li>
-              <li class="header-list">
-                <%= link_to 'logout', destroy_user_session_path, method: :delete %> <!-- 要確認 -->
+              <li class="nav-list-item">
+                <%= link_to destroy_user_session_path, method: :delete do %> <!-- 要確認 -->
+                  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                  logout
+                <% end %>
               </li>
             <% else %>
-              <li class="header-list">
-                <%= link_to "Home", "/" %> <!-- 要変更 -->
+              <li class="nav-list-item">
+                <%= link_to root_path do %> <!-- 要変更 -->
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                  Home
+                <% end %>
               </li>
-              <li class="header-list">
-                <%= link_to "About", home_about_path %>
+              <li class="nav-list-item">
+                <%= link_to home_about_path do %>
+                  <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                  About
+                <% end %>
               </li>
-              <li class="header-list">
-                <%= link_to "sign up", new_user_registration_path %>
+              <li class="nav-list-item">
+                <%= link_to new_user_registration_path do %>
+                sign up
+                <% end %>
               </li>
-              <li class="header-list">
-                <%= link_to "login", new_user_session_path %>
+              <li class="nav-list-item">
+                <%= link_to user_session_path do %>
+                  <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                  login
+                <% end %>
               </li>
             <% end %>
           </ul>
-        </div>
-      </div>
+      </nav>
+    </div>
     </header>
     <%= yield %>
     <footer>
