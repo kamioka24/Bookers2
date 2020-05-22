@@ -17,6 +17,21 @@
 @import "bootstrap";
 
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.clearfix ::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
 li {
 	list-style: none;
 }
@@ -33,17 +48,18 @@ header {
 }
 
 .header-title {
-	
+	float: left;
+	padding-top: 5px;
 }
 
 .nav-list {
-	
+	display: flex;
 	line-height: 50px;
-	margin-right: 30px;
+	float: right;
 }
 
 .nav-list-item {
-	
+	margin-right: 20px;
 }
 
 .footer-contents {
@@ -54,6 +70,17 @@ main {
 	margin: 0 auto;
 }
 
+.glyphicon-wrench {
+	text-align: center;
+	width: 70%;
+	border: 1px solid #EEE;
+	padding: 5px 10px;
+}
+
 .edit-btn {
 	padding-right: 30px;
+}
+
+footer {
+	float: right;
 }

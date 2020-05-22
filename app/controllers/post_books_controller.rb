@@ -1,4 +1,6 @@
 class PostBooksController < ApplicationController
+  before_action :authenticate_user!
+  before_action :current_book, only:[:edit, :update]
 
   def create
     @post_book = PostBook.new(post_book_params)
@@ -44,6 +46,13 @@ class PostBooksController < ApplicationController
   end
 
   private
+
+  def current_book
+    @post_book = PostBook.find(params[:id])
+    if @post_book.user != current_user
+       redirect_to post_book_path
+    end
+  end
 
   def post_book_params
     params.require(:post_book).permit(:title, :body, :user_id)

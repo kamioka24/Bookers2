@@ -1,6 +1,15 @@
 <main>
 	<h1>Editing Book</h1>
 
+	<% if @post_book.errors.any? %>
+		<%= @post_book.errors.count %>error prohibited this post_book from being saved:<br>
+			<ul>
+			<% @post_book.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+	<% end %>
+
 	<%= form_for(@post_book, url:"/post_books/#{@post_book.id}") do |f| %>
 		<p>Title<br>
 		<%= f.text_field :title %></p>
