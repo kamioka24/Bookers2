@@ -36,6 +36,11 @@ li {
 	list-style: none;
 }
 
+.container {
+	margin-left: 120px;
+	width: 100%;
+}
+
 header {
 	height: 50px;
 	background-color: #333;
@@ -48,7 +53,6 @@ header {
 }
 
 .header-title {
-	float: left;
 	padding-top: 5px;
 }
 
@@ -72,7 +76,7 @@ main {
 
 .glyphicon-wrench {
 	text-align: center;
-	width: 70%;
+	width: 100%;
 	border: 1px solid #EEE;
 	padding: 5px 10px;
 }
