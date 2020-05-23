@@ -20,6 +20,7 @@
 						</td>
 						<td><%= link_to post_book.title, post_book_path(post_book) %></td>
 						<td><%= post_book.body %></td>
+						<td>コメント:<%= post_book.book_comments.count %></td>
 					</tr>
 				<% end %>
 			</table>

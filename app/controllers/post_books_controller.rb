@@ -24,6 +24,7 @@ class PostBooksController < ApplicationController
     @my_book = PostBook.find(params[:id])
     @post_book = PostBook.new
     @user = @my_book.user
+    @book_comment = BookComment.new
   end
 
   def edit
