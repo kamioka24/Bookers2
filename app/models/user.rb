@@ -17,12 +17,12 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
   def follow(other_user)
-    follower.create(followed_id: other_user.id)
+    follower.create(followed_id: other_user)
   end
 
   # ユーザーのフォローを外す
   def unfollow(other_user)
-    follower.find_by(followed_id: uther_user.id).destroy
+    follower.find_by(followed_id: other_user).destroy
   end
 
   # フォローしていればtrueを返す
